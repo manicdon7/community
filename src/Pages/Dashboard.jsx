@@ -29,7 +29,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const usersResponse = await axios.get('http://localhost:5000/api/users');
+        const usersResponse = await axios.get('https://community-dashboard-backend.vercel.app/api/users');
         setUsers(usersResponse.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -42,7 +42,7 @@ const Dashboard = () => {
   const handleSearch = async () => {
     if (searchUserId) {
       try {
-        const response = await axios.get(`http://localhost:5000/api/users/${searchUserId}`);
+        const response = await axios.get(`https://community-dashboard-backend.vercel.app/api/users/${searchUserId}`);
         setUserDetails(response.data);
         setError(null);
       } catch (error) {
