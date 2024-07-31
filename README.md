@@ -1,70 +1,115 @@
-# Getting Started with Create React App
+# Community Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Community Dashboard project! This React-based application provides a comprehensive overview of community statistics, including user activity, messages, and more. It integrates various charts and visualization tools to display key metrics and user data effectively.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Statistics**: Display total, active, and inactive members.
+- **Data Visualization**: Interactive charts including Bar, Pie, Line, and Radar charts.
+- **Real-time Search**: Search for user details by ID with real-time feedback.
+- **Top Contributors**: List of top contributors based on message count.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React, Chart.js, Tailwind CSS, React Spring
+- **Backend**: Express.js, Node.js
+- **Database**: MongoDB
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Node.js** (version 14 or later)
+- **npm** (or **yarn**)
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository**:
+    
+    
+    `git clone https://github.com/manicdon7/community.git cd community-dashboard`
+    
+2. **Install dependencies**:
+    
+    
+    `npm install`
+    
+    or
+    
+    
+    `yarn install`
+    
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Configuration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Create a `.env` File
 
-### `npm run eject`
+Create a `.env` file in the root directory of the project and add the following variable for MongoDB connection:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+en
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`DB_URI=mongodb://your_mongodb_uri_here`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Replace `your_mongodb_uri_here` with your actual MongoDB URI.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Running the Project
 
-## Learn More
+1. **Start the development server**:
+    
+    
+    `npm start`
+    
+    or
+    
+    
+    `yarn start`
+    
+    This will start the React development server and open the dashboard in your default browser.
+    
+2. **Build for production** (optional):
+    
+    
+    `npm run build`
+    
+    or
+    
+    
+    `yarn build`
+    
+    This will create a production-ready build in the `build` folder.
+    
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### API Endpoints
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **GET** `/api/users`: Fetch all users.
+- **GET** `/api/users/:id`: Fetch details of a specific user by ID.
 
-### Code Splitting
+### Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Fork the repository**.
+    
+2. **Create a new branch**:
+    
+    
+    `git checkout -b feature/your-feature-name`
+    
+3. **Commit your changes**:
+    
+    
+    `git commit -m "Add your commit message here"`
+    
+4. **Push to the branch**:
+    
+    
+    `git push origin feature/your-feature-name`
+    
+5. **Create a pull request**.
+    
 
-### Analyzing the Bundle Size
+### License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-### Making a Progressive Web App
+### Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For any questions or issues, please contact manikandan05082003@gmail.com.
