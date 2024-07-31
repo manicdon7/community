@@ -4,12 +4,10 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
 
-// Create Express app
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
 mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -17,7 +15,6 @@ mongoose.connect(process.env.DB_URI, {
   .then(() => console.log('MongoDB connected successfully'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
-// Define Mongoose schemas and models
 const UserSchema = new mongoose.Schema({
   name: String,
   messages: Number,
@@ -33,7 +30,6 @@ const MessageSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 const Message = mongoose.model('Message', MessageSchema);
 
-// Mock data
 const mockUsers = [
     { _id: new mongoose.Types.ObjectId('64b2d587d8f87c15e6cf8f90'), name: 'David', messages: 15, isActive: true },
     { _id: new mongoose.Types.ObjectId('64b2d587d8f87c15e6cf8f91'), name: 'Eva', messages: 8, isActive: true },
@@ -85,9 +81,7 @@ const mockUsers = [
     { userId: new mongoose.Types.ObjectId('64b2d587d8f87c15e6cf8fa5'), text: 'Just finished a big project at work.', createdAt: new Date('2024-08-01T22:00:00Z') },
     { userId: new mongoose.Types.ObjectId('64b2d587d8f87c15e6cf8fa6'), text: 'Planning a surprise party for a friend.', createdAt: new Date('2024-08-01T23:00:00Z') },
   ];
-  
 
-// Seed mock data if database is empty
 const seedData = async () => {
   const userCount = await User.countDocuments();
   if (userCount === 0) {
@@ -100,15 +94,12 @@ const seedData = async () => {
   }
 };
 
-// Call seedData only once
 seedData();
 
-// Fetch user and related messages
 app.get('/api/users/:userId', async (req, res) => {
   const userId = req.params.userId;
   console.log(`Received userId: ${userId}`);
-  
-  // Validate ObjectId format
+
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     return res.status(400).json({ message: 'Invalid user ID format' });
   }
@@ -116,15 +107,12 @@ app.get('/api/users/:userId', async (req, res) => {
   try {
     const objectId = new mongoose.Types.ObjectId(userId);
     console.log(`Converted objectId: ${objectId}`);
-  
-    // Fetch user details
     const user = await User.findById(objectId);
     console.log(`User found: ${user}`);
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-  
-    // Fetch messages related to the user
+
     const messages = await Message.find({ userId: objectId });
     console.log(`Messages found: ${messages}`);
   
@@ -148,20 +136,17 @@ app.get('/api/users', async (req, res) => {
 app.get('/api/messages/:userId', async (req, res) => {
   const userId = req.params.userId;
   console.log(`Received userId: ${userId}`);
-  
-  // Validate ObjectId
+
   if (!mongoose.Types.ObjectId.isValid(userId)) {
     return res.status(400).json({ message: 'Invalid user ID format' });
   }
   
   try {
-    // Convert userId to ObjectId
+
     const objectId = new mongoose.Types.ObjectId(userId);
   
-    // Fetch messages
     const messages = await Message.find({ userId: objectId });
-  
-    // Check if any messages were found
+
     if (messages.length === 0) {
       return res.status(404).json({ message: 'No messages found for this user' });
     }
@@ -218,7 +203,6 @@ app.post('/api/messages', async (req, res) => {
   }
 });
 
-// Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

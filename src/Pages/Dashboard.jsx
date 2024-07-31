@@ -4,7 +4,6 @@ import { Bar, Pie, Line, Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PieController, LineElement, RadarController, RadialLinearScale, PointElement } from 'chart.js';
 import { useSpring, animated } from '@react-spring/web';
 
-// Registering all required components
 ChartJS.register(
   CategoryScale, 
   LinearScale, 
