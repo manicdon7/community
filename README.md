@@ -2,6 +2,10 @@
 
 Welcome to the Community Dashboard project! This React-based application provides a comprehensive overview of community statistics, including user activity, messages, and more. It integrates various charts and visualization tools to display key metrics and user data effectively.
 
+## Example User ID
+
+ **64b2d587d8f87c15e6cf8f90** - **64b2d587d8f87c15e6cf8fa6**
+
 ## Features
 
 - **User Statistics**: Display total, active, and inactive members.
