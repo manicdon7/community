@@ -114,7 +114,6 @@ const seedData = async () => {
     await Message.insertMany(mockMessages);
   }
 };
-
 seedData();
 
 app.get('/', (req, res) => {
