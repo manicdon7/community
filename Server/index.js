@@ -5,7 +5,28 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-app.use(cors());
+
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://community-dashboard.vercel.app/'
+
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 mongoose.connect(process.env.DB_URI, {
@@ -95,6 +116,10 @@ const seedData = async () => {
 };
 
 seedData();
+
+app.get('/', (req, res) => {
+    res.send('Server is working!');
+  });
 
 app.get('/api/users/:userId', async (req, res) => {
   const userId = req.params.userId;
