@@ -4,6 +4,7 @@ import { Bar, Pie, Line, Radar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement, PieController, LineElement, RadarController, RadialLinearScale, PointElement } from 'chart.js';
 import { useSpring, animated } from '@react-spring/web';
 
+// Registering all required components
 ChartJS.register(
   CategoryScale, 
   LinearScale, 
@@ -28,7 +29,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const usersResponse = await axios.get('https://community-dashboard-backend.vercel.app/api/users');
+        const usersResponse = await axios.get('http://localhost:5000/api/users');
         setUsers(usersResponse.data);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -41,7 +42,7 @@ const Dashboard = () => {
   const handleSearch = async () => {
     if (searchUserId) {
       try {
-        const response = await axios.get(`https://community-dashboard-backend.vercel.app/api/users/${searchUserId}`);
+        const response = await axios.get(`http://localhost:5000/api/users/${searchUserId}`);
         setUserDetails(response.data);
         setError(null);
       } catch (error) {
@@ -198,7 +199,7 @@ const Dashboard = () => {
           {error && <p className="text-red-500 mt-2">{error}</p>}
           {userDetails && (
             <animated.div style={detailsSpring}>
-              <h3 className="text-xl font-semibold mt-6">User ID: {userDetails.user._id}</h3>
+              <h3 className="text-xl font-semibold mt-6">User ID: {userDetails._id}</h3>
               <p>Name: {userDetails.user.name}</p>
               <p>Messages: {userDetails.user.messages}</p>
               <div className="mt-4">
