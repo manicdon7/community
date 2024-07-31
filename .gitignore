@@ -8,7 +8,6 @@
 # testing
 /coverage
 
-/Server
 .env
 
 # production
